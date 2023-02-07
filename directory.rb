@@ -6,7 +6,7 @@ def input_students
   students = []
   name = gets.chomp
   while !name.empty? do
-    students << {name: name, cohort: :november}
+    students << {name: name.capitalize!, cohort: :november}
     puts "Now we have #{students.count} students"
     name = gets.chomp
   end 
@@ -18,12 +18,24 @@ def print_header
   puts "-------------"
 end
 
-def print(names)
-  names.each {|name| puts "#{name[:name]} (#{name[:cohort]} cohort)" }
+def print(students) 
+  students.each_with_index {|student, index| 
+  if student[:name][0] == "T" 
+    if student[:name].length < 12
+      n = 0
+      count = 1
+      while n <= count do
+        puts "#{index + 1}. #{student[:name]} (#{student[:cohort]} cohort)" 
+        n += 1
+        count = 0
+      end
+    end
+  end
+}
 end
 
-def print_footer(names)
-  puts "Overall, we have #{names.count} great students"
+def print_footer(students)
+  puts "Overall, we have #{students.count} great students"
 end 
 
 students = input_students
