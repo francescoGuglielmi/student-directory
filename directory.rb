@@ -2,24 +2,28 @@
 
 def input_students
   students = []
+  cohorts = [] 
   puts "Please enter the name of the students."
   puts "To finish, just hit return "
   name = gets.chomp
   while !name.empty? do
+    puts "what cohort is the student in? "
+    cohort = gets.chomp
+    if cohort == ""
+      cohort = "november"
+    end
+    cohorts << cohort
     puts "Please enter a hobby."
-  puts "To finish, just hit return "
-  hobby = gets.chomp
-  puts "Please enter a gender identity."
-  puts "To finish, just hit return "
-  gender = gets.chomp
-  puts "Please enter a nationality."
-  puts "To finish, just hit return "
-  nationality = gets.chomp
-  students << {name: name, cohort: :november, hobby: hobby, gender: gender, nationality: nationality }
-  puts "Now we have #{students.count} students"
-  puts "Please enter the name of the students."
-  puts "To finish, just hit return "
-  name = gets.chomp
+    hobby = gets.chomp
+    puts "Please enter a gender identity."
+    gender = gets.chomp
+    puts "Please enter a nationality."
+    nationality = gets.chomp
+    students << {name: name, cohort: cohort.to_sym, hobby: hobby, gender: gender, nationality: nationality }
+    puts "Now we have #{students.count} students"
+    puts "Please enter the name of the students."
+    puts "To finish, just hit return "
+    name = gets.chomp
   end 
   students
 end 
@@ -35,11 +39,11 @@ def print(students)
       n = 0
       count = 1
       while n <= count do
-        puts "#{index + 1}. #{student[:name].center(student[:name].length + 6)} (#{student[:cohort]} cohort)" 
+        puts "#{index + 1}. #{student[:name].center (student[:name].length + 6)} (#{student[:cohort]} cohort)" 
         n += 1
         count = 0
       end
-    end
+    end   
   }
 end
 
