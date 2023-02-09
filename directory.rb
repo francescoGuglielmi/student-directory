@@ -2,7 +2,7 @@
 
 def input_students
   students = []
-  cohorts = [] 
+  cohorts = []   # I initialize cohort
   puts "Please enter the name of the students."
   puts "To finish, just hit return "
   name = gets.chomp
@@ -12,7 +12,7 @@ def input_students
     if cohort == ""
       cohort = "november"
     end
-    cohorts << cohort
+    cohorts << cohort     # I shovel every cohort inside array cohorts
     puts "Please enter a hobby."
     hobby = gets.chomp
     puts "Please enter a gender identity."
@@ -26,6 +26,9 @@ def input_students
     name = gets.chomp
   end 
   students
+   # Here I was supposed to "return cohorts" but if I do the console throws me an error 
+   # "no implicit conversion from Symbol to Integer" I don't know how to fix this.
+   # I was wishing to use that array to check students[:cohort] against it to print the names grouped in cohorts.
 end 
 
 def print_header
